@@ -9,9 +9,13 @@ using LeaveManagement.Web.Data;
 using AutoMapper;
 using LeaveManagement.Web.Models;
 using LeaveManagement.Web.Contracts;
+using Microsoft.AspNetCore.Authorization;
+using LeaveManagement.Web.Constants;
 
 namespace LeaveManagement.Web.Controllers
 {
+
+    [Authorize(Roles = Roles.Administrator)]
     public class LeaveTypesController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -52,6 +56,7 @@ namespace LeaveManagement.Web.Controllers
         }
 
         // GET: LeaveTypes/Create
+        
         public IActionResult Create()
         {
             return View();
@@ -62,6 +67,7 @@ namespace LeaveManagement.Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+       
         public async Task<IActionResult> Create(LeaveTypeVM leaveTypeVM)
         {
             if (ModelState.IsValid)
@@ -75,7 +81,7 @@ namespace LeaveManagement.Web.Controllers
         }
 
         // GET: LeaveTypes/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+             public async Task<IActionResult> Edit(int? id)
         {
             var leaveType = await leaveTypeRepository.GetAsync(id);
             if (leaveType == null)
@@ -91,6 +97,7 @@ namespace LeaveManagement.Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+     
         public async Task<IActionResult> Edit(int id, LeaveTypeVM leaveTypeVM)
         {
             if (id != leaveTypeVM.Id)
@@ -145,6 +152,7 @@ namespace LeaveManagement.Web.Controllers
         // POST: LeaveTypes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+       
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
 

@@ -35,8 +35,8 @@
 
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
-                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info"><i class="fa-solid fa-circle-info"></i></a> 
-               @*     <a asp-action="Delete" asp-route-id="@item.Id" >Delete</a>*@
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info"><i class="fa-solid fa-circle-info"></i></a>
+                    @*     <a asp-action="Delete" asp-route-id="@item.Id" >Delete</a>*@
                     <button type="button" class="btn btn-danger deleteBtn" data-id="@item.Id"><i class="fa-solid fa-trash"></i></button>
                 </td>
             </tr>
@@ -44,9 +44,9 @@
     </tbody>
 </table>
 <form id="deleteFrom" asp-action="Delete">
-        <input type="hidden" id="LeaveTypeId" name="Id" />
-       
-    </form>
+    <input type="hidden" id="LeaveTypeId" name="Id" />
+
+</form>
 @section Scripts
     {
     <script>
@@ -56,11 +56,11 @@
             $('.deleteBtn').click(function(e) {
 
                 swal({
-                        title:"Are you Sure",
-                        text:"Are you sure you want to delete ?",
-                        icon:"warning",
-                        buttons:true,
-                        dangerMode:true
+                    title: "Are you Sure",
+                    text: "Are you sure you want to delete ?",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true
 
                 }).then((confirm) => {
                     if (confirm) {
@@ -70,7 +70,7 @@
                         $('#deleteFrom').submit();
                     }
 
-                                    });
+                });
 
             });
 
